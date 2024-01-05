@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chart.js Example</title>
+  <!-- Include Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0"></script>
+  <!-- Include chartjs-plugin-labels-dv -->
+  <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
+</head>
+<body>
+<div style="margin-left:10rem; height:800px; width:800px;">
+  <canvas id="graph" width="40" height="40"></canvas>
+</div>
+  <script>
+    // Register ChartDataLabels plugin before using it
+    //Chart.register(ChartDataLabels);
+
+    const legendLabelColors = ["rgb(255, 99, 132)", "rgb(255, 159, 64)", "rgb(255, 205, 86)", "rgb(75, 192, 192)", "rgb(54, 162, 235)", "rgb(153, 102, 255)", "rgb(201, 203, 207)", "rgb(54, 162, 88)"];
+
+    const config = {
+      type: "polarArea",
+      data: {
+        labels: ["aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa", "bbbbbbbb", "cccccccc", "dddddddd", "eeeeeeee", "ffffffff", "gggggggg", "hhhhhhhh"],
+        datasets: [
+          
+          {
+            helper: true,
+            data: [100, 100, 100, 100, 100, 100, 100, 100],
+            backgroundColor: ["rgba(255, 99, 132, 0.2)", "rgba(255, 159, 64, 0.2)", "rgba(255, 205, 86, 0.2)", "rgba(75, 192, 192, 0.2)", "rgba(54, 162, 235, 0.2)", "rgba(153, 102, 255, 0.2)", "rgba(201, 203, 207, 0.2)", "rgba(54, 162, 88, 0.2)"],
+            datalabels: {
+               display: false
+            }
+          }
+        ]
+      },
+      options: {
+cutout: '50%',
+        layout: {
+          padding: 20,
+maxPadding: 30
+        },
+        scales: {
+          r: {
+            angleLines: {
+              display: true
+            },
+            ticks: {
+              display: false
+            },
+            pointLabels: {
+              display: false
+            }
+          }
+        },
+        scale: {
+          min: 0,
+          max: 100
+        },
+        plugins: {
+          labels: {
+            arc: true,
+            fontColor: '#000',
+position: 'border',
+            fontSize: 14,
+            render: (args) => args.dataset.helper ? args.label : '',
+            fontColor: (args) => legendLabelColors[args.index] 
+          }
+        }
+      }
+    };
+
+    const chart = new Chart('graph', config);
+
+  </script>
+</body>
+</html>

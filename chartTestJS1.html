@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Chart.js Example</title>
+  <!-- Include Chart.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@3.7.0"></script>
+  <!-- Include chartjs-plugin-labels-dv -->
+  <script src="https://unpkg.com/chart.js-plugin-labels-dv/dist/chartjs-plugin-labels.min.js"></script>
+</head>
+<body>
+<div style="margin-left:10rem; height:600px; width:600px; position: relative;">
+  <canvas id="mainPieChart" width="400" height="400"></canvas>
+</div>
+<script>
+  const mainConfig = {
+    type: 'pie',
+    data: {
+      labels: ['Redddddddddddddddddd', 'Blueeeeeeeeeeeeeeeeeeeeee', 'Greennnnnnnnnnnnnnnnnnn', 'Yellow'],
+      datasets: [{
+        label: 'Dataset 1',
+        data: [30, 20, 30, 20],
+        backgroundColor: [
+          'red',
+          'blue',
+          'green',
+          'yellow'
+        ],
+        borderWidth: 1
+      }]
+    },
+    options: {
+      cutout: '80%',
+      plugins: {
+        legend: false,
+        labels: {
+          render: 'label',
+          fontColor: '#000',
+          arc: true,
+          position: 'inside',
+fontSize: 20,
+        }
+      }
+    }
+  };
+
+  const mainPieChart = new Chart('mainPieChart', mainConfig);
+</script>
+</body>
+</html>
